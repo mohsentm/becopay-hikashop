@@ -14,6 +14,7 @@ ADD ./php.ini /etc/php7/php.ini
 
 ADD ./nginx.conf /etc/nginx/conf.d/default.conf
 
+RUN apk update && apk add php7-ldap php7-calendar
 RUN chsh -s /bin/bash www-data
 
 COPY joomla $INSTALL_DIR
