@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [ ! -f $INSTALL_DIR/configuration.php ]; then
+        echo >&2 "========================================================================"
+        echo >&2
+        echo >&2 "Start installing the joomla"
+        
+	cd $INSTALL_DIR
+	cp _configuration.php configuration.php
+	sed -i s/MYSQL_HOST/$MYSQL_HOST/ configuration.php
+	sed -i s/MYSQL_DATABASE/$MYSQL_DATABASE/ configuration.php
+	sed -i s/MYSQL_USER/$MYSQL_USER/ configuration.php
+	sed -i s/MYSQL_PASSWORD/$MYSQL_PASSWORD/ configuration.php
+	
+	chown www-data:www-data configuration.php
+	#import database
+	php /usr/local/bin/import-db.php
+	
+	rm -rf $INSTALL_DIR/installation
+	rm /usr/local/bin/import-db.php
+        rm -rf $INSTALL_DIR/import-db.sql
+	rm /usr/local/bin/install-joomla
+        echo >&2
+        echo >&2 "End installation"
+        echo >&2 "========================================================================"
+fi
+

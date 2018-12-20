@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" version="3.1" method="upgrade" group="hikashoppayment">
+    <name>Hikashop Becopay Payment Plugin</name>
+    <creationDate>12/17/2018</creationDate>
+    <version>1.0.0</version>
+    <author>Becopay Team</author>
+    <authorEmail>io@becopay.com</authorEmail>
+    <authorUrl>http://becopay.com/en</authorUrl>
+    <copyright>(C) 2019-2019 Becopay. All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-3.0</license>
+    <description>This plugin enables you to setup your Becopay payment gateway</description>
+
+    <!-- Plugin files -->
+    <files>
+        <filename>index.html</filename>
+        <filename plugin="becopay">becopay.php</filename>
+        <filename>becopay_end.php</filename>
+        <folder>vendor</folder>
+    </files>
+
+    <languages>
+        <language tag="en-GB">languages/en-GB/en-GB.plg_hikashoppayment_becopay.ini</language>
+        <language tag="en-GB">languages/en-GB/en-GB.plg_hikashoppayment_becopay.sys.ini</language>
+        <language tag="fa-IR">languages/fa-IR/fa-IR.plg_hikashoppayment_becopay.ini</language>
+        <language tag="fa-IR">languages/fa-IR/fa-IR.plg_hikashoppayment_becopay.sys.ini</language>
+    </languages>
+    <!-- Config parameter -->
+    <params addpath="/components/com_hikashop/params">
+        <param name="pluginoptions" type="pluginoptions" default="plugin" label="hikashop"
+               description="HikaShop options"/>
+    </params>
+    <config>
+        <fields name="params" addfieldpath="/components/com_hikashop/fields">
+            <fieldset name="basic">
+                <field id="pluginoptions" name="pluginoptions" type="pluginoptions" label="hikashop"
+                       description="HikaShop options"/>
+            </fieldset>
+        </fields>
+    </config>
+
+    <!-- Update servers -->
+    <updateservers>
+        <server type="extension" priority="1" name="becopay">https://raw.githubusercontent.com/becopay/Hikashop-Becopay-Gateway/master/manifest.xml</server>
+    </updateservers>
+</extension>
